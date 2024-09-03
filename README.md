@@ -24,7 +24,7 @@ how to fix it, please visit the webpage mentioned above.
 Now, with the custom CA certificate, the curl command succeeds:
 
 ```console
-curl https://nix-test.zebradil.dev:8443/payload.txt --cacert ca-cert.pem
+$ curl https://nix-test.zebradil.dev:8443/payload.txt --cacert ca-cert.pem
 This is a downloadable file
 ```
 
@@ -33,7 +33,7 @@ This is a downloadable file
 Without any additional configuration, the nix-build fails:
 
 ```console
-nix-build
+$ nix-build
 warning: found empty hash, assuming 'sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='
 these 2 derivations will be built:
   /nix/store/5rsh6iy12zsykphxpf12r69399npigms-payload.txt.drv
@@ -72,7 +72,7 @@ error: 1 dependencies of derivation '/nix/store/q94r8i9wjjg1j1bqfj3qx4i9h5060rhn
 Now, trying to set the `SSL_CERT_FILE` environment variable to the path of the custom CA certificate:
 
 ```console
-SSL_CERT_FILE=ca-cert.pem nix-build
+$ SSL_CERT_FILE=ca-cert.pem nix-build
 warning: found empty hash, assuming 'sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='
 these 2 derivations will be built:
   /nix/store/5rsh6iy12zsykphxpf12r69399npigms-payload.txt.drv
@@ -113,7 +113,7 @@ The `SSL_CERT_FILE` environment variable is not respected by the `curl` command.
 Next, trying to set the `NIX_SSL_CERT_FILE` environment variable:
 
 ```console
-NIX_SSL_CERT_FILE=ca-cert.pem nix-build
+$ NIX_SSL_CERT_FILE=ca-cert.pem nix-build
 warning: found empty hash, assuming 'sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='
 these 2 derivations will be built:
   /nix/store/5rsh6iy12zsykphxpf12r69399npigms-payload.txt.drv
