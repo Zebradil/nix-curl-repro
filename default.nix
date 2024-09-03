@@ -4,7 +4,6 @@ pkgs.stdenv.mkDerivation {
   src = pkgs.fetchurl {
     url = "https://nix-test.zebradil.dev:8443/payload.txt";
     hash = "";
-    curlOpts = "-v";
   };
 
   buildPhase = ''
